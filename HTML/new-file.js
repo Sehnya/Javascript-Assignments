@@ -1,14 +1,25 @@
-let name = "John";
-let surname = "Doe";
 
-console.log(name);
-console.log(surname);
+function add7() {
+    return (Number) + 7;
+};
 
-let age = 11;
-console.log(age);
+function multiply(a,b) {
+    return a * b;
+};
 
-age = 54
+function capitalize() {
+    return "?".charAt(0).toUpperCase() + str.slice(1);
+};
 
-const pi = 3.14;
+function lastLetter () {
+    return "?".slice(-1);
+}
 
-console.log(pi);
+const a = "hello!";
+const b = 6;
+
+console.log(capitalize(a));
+console.log(multiply(b));
+console.log(add7(b));
+console.log(lastLetter(a));
+
