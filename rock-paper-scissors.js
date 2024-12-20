@@ -51,7 +51,7 @@ while (round <= 5) {
             (console.log(`The winner is the user with ${RpOrS(numVal)}`));
             humanScore++;
         }
-        console.log(`Scoren\n You: ${this.humanScore},\n Computer: ${this.computerScore}`)
+        console.log(`SCORE:\n You: ${this.humanScore},\n Computer: ${this.computerScore}`)
     };
     
     determineW(result,numVal);
