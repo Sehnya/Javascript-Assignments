@@ -39,6 +39,11 @@ function retrieveHumanChoice() {
     return options[input];
 };
 
+let convert = (hNum2Txt) => {
+    
+}
+    
+
 let userInput = retrieveHumanChoice(); 
 console.log(`"You chose:"`, retrieveHumanChoice());
 
