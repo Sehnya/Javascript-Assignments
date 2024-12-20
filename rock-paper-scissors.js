@@ -18,32 +18,63 @@ let RpOrS = (number) => {
     0 : 'rock',
     1 : 'paper',
     2 : 'scissors'
-}
+};
     return choices[number]
 };
 
-const result = getComputerChoice(max);
-console.log(`The computer chose: ${RpOrS(result)} (Choice #${result})`);
+globalThis.humanScore = 0;
+globalThis.computerScore = 0;
+let round = 1;
+
+while (round <= 5) {
+    console.log(`Round ${round}:`);
+    const result = getComputerChoice(max);
+    console.log(`The computer chose: ${RpOrS(result)} (${result})`);
 
 
-function displayOptions() { 
-    console.log("Select an Option");
-    for (let key in options) {
-        console.log(`${key}: ${options[key]}`);
+    function getHumanChoice() {
+        let input = prompt("Enter rock, paper, or scissors:").toLowerCase().slice("");
+        let numVal = options[input];
+        console.log(`You chose: ${[input]} (${numVal})`);
+        return numVal;
+    };
+    
+    let numVal = getHumanChoice();
+
+    function determineW(result,numVal) {
+        if (result === numVal) {
+            console.log("It's a TIE!! No Points Awarded.")
+        } else if ((result === 1 && numVal == 0) || (result === 2 && numVal === 1) || (result === 0 && numVal === 2)) {
+            console.log(`The winner is computer with ${RpOrS(result)}`);
+            computerScore++;
+        } else {
+            (console.log(`The winner is the user with ${RpOrS(numVal)}`));
+            humanScore++;
+        }
+        console.log(`Scoren\n You: ${this.humanScore},\n Computer: ${this.computerScore}`)
+    };
+    
+    determineW(result,numVal);
+
+    if (humanScore === 3) {
+        console.log(`You won the game! Congrats!`);
+        break;
+    } else if (computerScore === 3) {
+        console.log(`WOMP WOMP! The computer won the game! Better luck next time!`);
+        break;
     }
-};
 
-function retrieveHumanChoice() {
-    displayOptions();
-    let input = prompt("Enter rock, paper, or scissors:");
-    return options[input];
-};
+    round++;
 
-let convert = (hNum2Txt) => {
-    
 }
-    
 
-let userInput = retrieveHumanChoice(); 
-console.log(`"You chose:"`, retrieveHumanChoice());
+    if (round > 5){
+        if (humanScore > computerScore) {
+            console.log(`You won the game! Congrats!`);
+        } else if (humanScore < computerScore) {
+            console.log(`WOMP WOMP! the computer won the game! Better luck next time!`);
+        } else {
+            console.log(`It's a tie game!`)
+        }
+    } 
 
