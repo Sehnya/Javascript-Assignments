@@ -1,57 +1,67 @@
-let max = 3;
-let rock = 0;
-let paper = 1;
-let scissors = 2;
+
+// let round = 1;
+
+document.addEventListener("DOMContentLoaded", () => {
+    globalThis.humanScore = 0;
+    globalThis.computerScore = 0;
+    const roundDisplay = document.getElementById('round');
+    const buttons = document.querySelectorAll("#RPScontainer button");
+    const choices = Array.from(buttons).map(button => button.id);
+    const userChoiceDisplay = document.getElementById('user-choice');
+    const computerChoiceDisplay = document.getElementById('computer-choice');
+    const winnerDisplay = document.getElementById('winner');
+    const scoreDisplay = document.getElementById('score');
+
+    function getComputerChoice() {
+        return choices[Math.floor(Math.random() * buttons.length)];
+    }
+    function determineW(compChoice,userChoice) {
+        if (compChoice === userChoice) {
+            return ("It's a TIE!! No Points Awarded.")
+        } else if (
+            (compChoice === 'paper' && userChoice == 'rock') ||
+            (compChoice === 'scissors' && userChoice === 'paper') ||
+            (compChoice === 'rock' && userChoice === 'scissors')) {
+                computerScore++;
+            return (`The winner is computer with ${compChoice}`);
+            
+        } else {
+                humanScore++;
+            return (`The winner is the user with ${userChoice}`);
+        };
+    };
+    
+    buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const compChoice = getComputerChoice();
+        const userChoice = button.id
+        const winner = determineW(userChoice,compChoice);
+        let round = 0; 
+        round++;
+        
+        roundDisplay.textContent = `Round: ${round}`
+        userChoiceDisplay.textContent = `User choice: ${userChoice}`;
+        computerChoiceDisplay.textContent = `Computer choice: ${compChoice}`;
+        scoreDisplay.textContent = `User: ${humanScore}\nComputer:${computerScore}\n`;
+        winnerDisplay.textContent = winner
+         });
+     });
+});
 
 
+//     let max = 3;
+//     let compChoice = buttons[Math.floor(Math.random(max) * choices.length)];
+//     return compInput[compChoice]
+// }; 
+// const Compchoice = compInput;
+// console.log(Compchoice);
 
-// const container = document.querySelector("#RPScontainer");
-// var options = {
-//    container(querySelector('#rock')): rock,
-//     document.querySelector('#paper') paper,
-//     document.querySelector('#scissors')  scissors': scissors,
-
-// };
-
-// function getComputerChoice(max) {
-//     return Math.floor(Math.random() * max);
-// };
-
-// let RpOrS = (number) => {
-//     let choices = {
-//     0 : 'rock',
-//     1 : 'paper',
-//     2 : 'scissors'
-// };
-//     return choices[number]
-// };
-// const result = getComputerChoice(max);
-// console.log(`The computer chose: ${RpOrS(result)} (${result})`);
-
-// function getHumanChoice() {
-//     let input = 
-//     let numVal = options[input];
-//     console.log(`You chose: ${[input]} (${numVal})`);
-//     return numVal;
-// };
-
-// let numVal = getHumanChoice();
-
-
-globalThis.humanScore = 0;
-globalThis.computerScore = 0;
-let round = 1;
-
-const buttons = document.querySelectorAll("#RPScontainer");
-buttons.forEach((button) => {
-    console.log(button.id)
     // button.addEventListener("click", () => {
          
     //     console.log();
     // });      
         // let numVal = options[input]; 
         // console.log(`You chose: ${[input]}`);
-});
 
         // not returning numval
     //  buttonConversion => {
