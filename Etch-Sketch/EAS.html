@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-Sketch</title>
+</head>
+<link rel="stylesheet" href="EAS.css">
+<body>
+    <script> 
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.flexWrap = 'wrap';
+        container.style.width = '100vw';
+        container.style.height = '100vh';
+
+        for (let i = 0; i < 256; i++) {
+            const square = document.createElement('div');
+            square.style.width = '6.25%'; // 100% / 16
+            square.style.height = '6.25%'; // 100% / 16
+            square.style.border = '1px solid black';
+            square.style.boxSizing = 'border-box';
+            container.appendChild(square);
+        }
+
+        document.body.appendChild(container);
+
+        container.addEventListener('mouseover', function(e) {
+            if (e.target.tagName === 'DIV') {
+                e.target.style.backgroundColor = 'black';
+            }
+        });
+        
+
+    </script>
+
+</body>
+
+</html>
