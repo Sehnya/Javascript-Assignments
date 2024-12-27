@@ -4,59 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
+    <script src="EAS.js"></script>
 </head>
-<link rel="stylesheet" href="EAS.css">
 <body>
-    <button id="squarenumber">New Grid</button>
-    <script>
-        const button = document.getElementById('squarenumber');
-        button.addEventListener('click', () => {
-            const number = prompt ('Enter the number of squares per side for the new grid.');
-            if (number > 100) {
-                alert('Please enter a number less than 100');
-            } else {
-                const container = document.querySelector('div');
-                container.innerHTML = '';
-                container.style.width = '100vw';
-                container.style.height = '100vh';
-                container.style.display = 'flex';
-                container.style.flexWrap = 'wrap';
-                for (let i = 0; i < number * number; i++) {
-                    const square = document.createElement('div');
-                    square.style.width = `${100 / number}%`;
-                    square.style.height = `${100 / number}%`;
-                    square.style.border = '1px solid black';
-                    square.style.boxSizing = 'border-box';
-                    container.appendChild(square);
-                }
-            }
-            
-        })
-        const container = document.createElement('div');
-        container.style.display = 'flex';
-        container.style.flexWrap = 'wrap';
-        container.style.width = '100vw';
-        container.style.height = '100vh';
-
-        for (let i = 0; i < 256; i++) {
-            const square = document.createElement('div');
-            square.style.width = '6.25%'; // 100% / 16
-            square.style.height = '6.25%'; // 100% / 16
-            square.style.border = '1px solid black';
-            square.style.boxSizing = 'border-box';
-            container.appendChild(square);
-        }
-
-        document.body.appendChild(container);
-
-        container.addEventListener('mouseover', function(e) {
-            if (e.target.tagName === 'DIV') {
-                e.target.style.backgroundColor = 'black';
-            }
-        });
-
-    </script>
-
+    <h1>Etch-a-Sketch</h1>
+    <div class="container">
+        <div class="control-panel" >
+            <h4>Brushes:</h4>
+            <button id="brush-small"></button>
+            <button id="brush-medium"></button>
+            <button id="brush-large"></button>
+        </div>
+        <div class="color-palette">
+            <h4>Colors:</h4>
+            <button class="color-rainbow"></button>
+            <button id="color-pred"></button>
+            <button id="color-porange"></button>
+            <button id="color-pyellow"></button>
+            <button id="color-pgreen"></button>
+            <button id="color-pblue"></button>
+            <button id="color-ppurple"></button>
+            <button id="color-ppink"></button>
+        </div>
+        <button class="clear-button">Clear</button>
+        <div class="grid"></div>
+    </div>
 </body>
 
 </html>
