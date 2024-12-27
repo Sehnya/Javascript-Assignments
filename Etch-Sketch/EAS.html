@@ -7,7 +7,31 @@
 </head>
 <link rel="stylesheet" href="EAS.css">
 <body>
-    <script> 
+    <button id="squarenumber">New Grid</button>
+    <script>
+        const button = document.getElementById('squarenumber');
+        button.addEventListener('click', () => {
+            const number = prompt ('Enter the number of squares per side for the new grid.');
+            if (number > 100) {
+                alert('Please enter a number less than 100');
+            } else {
+                const container = document.querySelector('div');
+                container.innerHTML = '';
+                container.style.width = '100vw';
+                container.style.height = '100vh';
+                container.style.display = 'flex';
+                container.style.flexWrap = 'wrap';
+                for (let i = 0; i < number * number; i++) {
+                    const square = document.createElement('div');
+                    square.style.width = `${100 / number}%`;
+                    square.style.height = `${100 / number}%`;
+                    square.style.border = '1px solid black';
+                    square.style.boxSizing = 'border-box';
+                    container.appendChild(square);
+                }
+            }
+            
+        })
         const container = document.createElement('div');
         container.style.display = 'flex';
         container.style.flexWrap = 'wrap';
@@ -30,7 +54,6 @@
                 e.target.style.backgroundColor = 'black';
             }
         });
-        
 
     </script>
 
